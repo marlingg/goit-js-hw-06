@@ -1,12 +1,17 @@
 const loginForm = document.querySelector('.login-form');
 
-loginForm.addEventListener('submit', (event) => {
+loginForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const formDataObject = {};
-    formData.forEach((value, key) => {
-        formDataObject[key] = value;
-    });
-    console.log(formDataObject);
-    loginForm.reset();
+
+    const emailInput = loginForm.elements.email;
+    const passwordInput = loginForm.elements.password;
+
+    if (emailInput.value.trim() === '' || passwordInput.value.trim() === '') {
+        alert('Будь ласка, заповніть обидва поля.');
+    } else {
+
+
+        console.log('Form is valid. Submitting...');
+        loginForm.reset();
+    }
 });

@@ -12,10 +12,17 @@ const images = [{
     },
 ];
 
+
 const galleryList = document.querySelector('.gallery');
 
-images.forEach((image) => {
-    const listItem = document.createElement('li');
-    listItem.innerHTML = `<img src="${image.url}" alt="${image.alt}" width="300">`;
-    galleryList.appendChild(listItem);
-});
+в
+const galleryItems = images.reduce((acc, { url, alt }) => {
+    acc += `
+      <li class="gallery-item">
+        <img src="${url}" alt="${alt}">
+      </li>
+    `;
+    return acc;
+}, '');
+
+galleryList.insertAdjacentHTML('beforeend', galleryItems);
